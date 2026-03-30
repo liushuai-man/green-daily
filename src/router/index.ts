@@ -3,16 +3,13 @@ import { useUserStore } from '@/store/modules/user';
 
 const routes = [
   {
-    path: '/',
-    redirect: '/layout/home', // 重定向到存在的路径
-  },
-  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/Login.vue'),
   },
   {
-    path: '/layout',
+    path: '/',
+    redirect: '/home', // 重定向到存在的路径
     component: () => import('@/layout/default/index.vue'),
     children: [
       {

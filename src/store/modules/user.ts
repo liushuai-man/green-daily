@@ -1,14 +1,24 @@
 import { defineStore } from 'pinia';
 
+interface userInfo {
+  id: number;
+  phone: string;
+  nickname: string;
+}
+
 interface UserState {
   token: string;
-  userInfo: Record<string, any>;
+  userInfo: userInfo;
 }
 
 export const useUserStore = defineStore('user', {
   state: (): UserState => ({
     token: localStorage.getItem('token') || '',
-    userInfo: {},
+    userInfo: {
+      id: 0,
+      phone: '',
+      nickname: '',
+    },
   }),
   actions: {
     setToken(token: string) {
@@ -17,7 +27,11 @@ export const useUserStore = defineStore('user', {
     },
     logout() {
       this.token = '';
-      this.userInfo = {};
+      this.userInfo = {
+        id: 0,
+        phone: '',
+        nickname: '',
+      };
       localStorage.removeItem('token');
     },
   },
