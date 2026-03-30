@@ -51,6 +51,20 @@
   }
 }
 
+// 登录方式切换
+.login-tabs {
+  margin-bottom: 20px;
+  text-align: center;
+  
+  :deep(.el-tabs__header) {
+    margin-bottom: 20px;
+  }
+  
+  :deep(.el-tabs__nav) {
+    justify-content: center;
+  }
+}
+
 // 表单通用样式：间距优化
 .login-form,
 .register-form {

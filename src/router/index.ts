@@ -41,6 +41,12 @@ const routes = [
         name: 'CheckIn',
         component: () => import('@/views/check-in/index.vue'),
       },
+      // 管理后台
+      {
+        path: '/admin',
+        name: 'Admin',
+        component: () => import('@/views/admin/index.vue'),
+      },
     ],
   },
 ];
@@ -51,7 +57,7 @@ const router = createRouter({
 });
 
 // 路由守卫：未登录跳转到登录
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const userStore = useUserStore();
   if (to.path !== '/login' && to.path !== '/register' && !userStore.token) {
     next('/login');

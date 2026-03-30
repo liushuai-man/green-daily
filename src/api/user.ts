@@ -9,7 +9,7 @@ export const getCode = (phone: string): Promise<any> =>
 /**
  * 登录
  */
-export const login = (params: { phone: string; password: string }): Promise<any> =>
+export const login = (params: { phone: string; password?: string; code?: string }): Promise<any> =>
   request.post('/api/login', null, { params });
 
 /**

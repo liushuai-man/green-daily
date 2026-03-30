@@ -40,6 +40,11 @@
           <i class="el-icon-user-solid"></i>
           <span>个人中心</span>
         </el-menu-item>
+
+        <el-menu-item index="/admin">
+          <i class="el-icon-setting"></i>
+          <span>管理后台</span>
+        </el-menu-item>
       </el-menu>
 
       <!-- 用户信息 -->

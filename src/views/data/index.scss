@@ -1,0 +1,243 @@
+.data-page {
+  padding: 20px;
+}
+
+.data-card {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-header {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.data-overview {
+  margin-bottom: 30px;
+}
+
+.overview-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.overview-item {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+}
+
+.calendar-section {
+  margin-bottom: 30px;
+}
+
+.section-card {
+  margin-bottom: 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calendar-grid {
+  margin-top: 20px;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: #606266;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  position: relative;
+  height: 60px;
+  border: 1px solid #e4e7ed;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+  background-color: #ecf5ff;
+  border-color: #d9ecff;
+}
+
+.calendar-day.other-month {
+  color: #c0c4cc;
+  background-color: #f5f7fa;
+}
+
+.calendar-day.checked {
+  background-color: #f0f9eb;
+  border-color: #e1f3d8;
+  color: #67c23a;
+}
+
+.calendar-day.today {
+  border-color: #409eff;
+  font-weight: 500;
+}
+
+.check-mark {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 12px;
+  color: #67c23a;
+}
+
+.day-detail {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+}
+
+.day-detail h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.day-detail p {
+  margin: 0;
+  font-size: 14px;
+  color: #606266;
+}
+
+.action-stats-section {
+  margin-bottom: 30px;
+}
+
+.action-stats {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.action-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.action-name {
+  width: 150px;
+  font-size: 14px;
+}
+
+.action-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.action-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.action-bar-fill.primary {
+  background-color: #409eff;
+}
+
+.action-bar-fill.success {
+  background-color: #67c23a;
+}
+
+.action-bar-fill.warning {
+  background-color: #e6a23c;
+}
+
+.action-bar-fill.info {
+  background-color: #909399;
+}
+
+.action-bar-fill.danger {
+  background-color: #f56c6c;
+}
+
+.action-count {
+  width: 60px;
+  text-align: right;
+  font-size: 14px;
+  color: #606266;
+}
+
+.carbon-trend-section {
+  margin-bottom: 30px;
+}
+
+.carbon-trend {
+  margin-top: 20px;
+  display: flex;
+  align-items: end;
+  gap: 15px;
+  height: 200px;
+}
+
+.trend-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.trend-date {
+  font-size: 12px;
+  color: #909399;
+}
+
+.trend-bar {
+  flex: 1;
+  width: 100%;
+  background-color: #f5f7fa;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.trend-bar-fill {
+  width: 100%;
+  background-color: #409eff;
+  transition: height 0.3s ease;
+}
+
+.trend-value {
+  font-size: 12px;
+  color: #606266;
+}
