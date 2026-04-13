@@ -1,117 +1,232 @@
 .check-in-page {
-  padding: 20px;
+  min-height: 100%;
+  background-color: #f5f7fa;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-.check-in-card {
-  max-width: 1000px;
-  margin: 0 auto;
+/* 主内容区域 */
+.main-content {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  margin-top: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 左侧边栏 */
+.left-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 中间内容 */
+.content-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 右侧边栏 */
+.right-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Banner */
+.banner {
+  background: linear-gradient(135deg, #409eff, #67c23a);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+}
+
+.banner-content h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.banner-content p {
+  font-size: 12px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.banner-content .el-button {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* 右上角打卡提示 */
+.check-in-tip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.check-in-icon-container {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-in-icon-container:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.check-in-icon {
+  font-size: 18px;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.check-in-badge-text {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  padding: 2px 6px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 9px;
+  background-color: #f56c6c;
+  color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 通用卡片样式 */
+.section-card {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .card-header {
+  font-size: 11px;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
-  font-weight: 500;
+  padding: 6px 10px;
 }
 
+/* 打卡状态 */
 .check-in-status {
-  margin-bottom: 30px;
+  padding: 10px;
 }
 
 .check-in-info {
   display: flex;
-  gap: 30px;
-  margin-top: 20px;
-  padding: 20px;
+  gap: 15px;
+  margin-top: 10px;
+  padding: 10px;
   background-color: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 .check-in-info p {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
-.eco-actions-section {
-  margin-bottom: 30px;
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .left-sidebar,
+  .right-sidebar {
+    width: 250px;
+  }
 }
 
-.eco-actions-section h3 {
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-weight: 500;
+@media (max-width: 992px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    width: 100%;
+  }
+
+  .left-sidebar {
+    order: 2;
+  }
+
+  .content-center {
+    order: 1;
+  }
+
+  .right-sidebar {
+    order: 3;
+  }
 }
 
-.eco-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+/* 确保模块内部不滚动 */
+.left-sidebar > *,
+.right-sidebar > *,
+.content-center > * {
+  overflow: hidden;
 }
 
-.eco-action-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #f5f7fa;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* 允许页面整体滚动 */
+.check-in-page {
+  overflow-y: auto;
 }
 
-.eco-action-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* 隐藏滚动条但保留滚动功能 */
+.check-in-page::-webkit-scrollbar {
+  width: 6px;
 }
 
-.eco-action-item p {
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
+.check-in-page::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
 }
 
-.check-in-history {
-  margin-bottom: 20px;
+.check-in-page::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
 }
 
-.check-in-history h3 {
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.check-in-form {
-  max-width: 400px;
-}
-
-.dialog-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.eco-action-item .el-avatar.primary {
-  background-color: #409eff;
-  color: #fff;
-}
-
-.eco-action-item .el-avatar.success {
-  background-color: #67c23a;
-  color: #fff;
-}
-
-.eco-action-item .el-avatar.warning {
-  background-color: #e6a23c;
-  color: #fff;
-}
-
-.eco-action-item .el-avatar.info {
-  background-color: #909399;
-  color: #fff;
-}
-
-.eco-action-item .el-avatar.danger {
-  background-color: #f56c6c;
-  color: #fff;
+.check-in-page::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }

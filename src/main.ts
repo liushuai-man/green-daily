@@ -4,5 +4,6 @@ import router from '@/router/index.ts';
 import { createPinia } from 'pinia';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+import '@/assets/styles/global.scss';
 
 createApp(App).use(router).use(createPinia()).use(ElementPlus).mount('#app');

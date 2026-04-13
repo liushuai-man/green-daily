@@ -142,27 +142,12 @@
               <span>我的成就</span>
             </div>
           </template>
-          <div class="achievements-grid">
-            <div
+          <div class="achievements-list">
+            <AchievementCard
               v-for="achievement in achievements"
               :key="achievement.id"
-              class="achievement-item"
-              :class="{ unlocked: achievement.unlocked }"
-            >
-              <el-avatar :size="80" :class="{ unlocked: achievement.unlocked }">
-                <img
-                  v-if="achievement.unlocked && achievement.icon"
-                  :src="achievement.icon"
-                  alt="勋章"
-                />
-                <span v-else>{{ achievement.name.charAt(0) }}</span>
-              </el-avatar>
-              <div class="achievement-info">
-                <h4>{{ achievement.name }}</h4>
-                <p v-if="achievement.unlocked" class="unlocked-text">已解锁</p>
-                <p v-else class="lock-text">{{ achievement.requirement }}</p>
-              </div>
-            </div>
+              :achievement="achievement"
+            />
           </div>
         </el-card>
       </div>
@@ -178,7 +163,7 @@
           </template>
           <div class="exchange-items">
             <div
-              v-for="item in exchangeItems"
+              v-for="item in rewards"
               :key="item.id"
               class="exchange-item"
               :class="{ disabled: currentPoints < item.points }"
@@ -209,6 +194,9 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, computed } from 'vue';
 import { ElMessage, ElUpload } from 'element-plus';
+import AchievementCard from '@/components/AchievementCard.vue';
+import { achievements, rewards } from '@/mock';
+import type { Reward } from '@/types';
 
 // 用户信息
 const userInfo = reactive({
@@ -260,66 +248,6 @@ const userStats = reactive({
   totalCarbonReduction: 12.5,
 });
 
-// 成就列表
-const achievements = reactive([
-  {
-    id: 1,
-    name: '入门勋章',
-    requirement: '累计打卡7天',
-    unlocked: true,
-    icon: '',
-  },
-  {
-    id: 2,
-    name: '进阶勋章',
-    requirement: '累计打卡30天，连续打卡7天',
-    unlocked: true,
-    icon: '',
-  },
-  {
-    id: 3,
-    name: '高级勋章',
-    requirement: '累计打卡100天，连续打卡30天',
-    unlocked: false,
-    icon: '',
-  },
-  {
-    id: 4,
-    name: '终极勋章',
-    requirement: '累计打卡365天，连续打卡90天',
-    unlocked: false,
-    icon: '',
-  },
-]);
-
-// 积分兑换物品
-const exchangeItems = reactive([
-  {
-    id: 1,
-    name: '环保勋章',
-    description: '虚拟环保勋章，展示你的环保成就',
-    points: 100,
-  },
-  {
-    id: 2,
-    name: '环保壁纸',
-    description: '精美的环保主题壁纸',
-    points: 150,
-  },
-  {
-    id: 3,
-    name: '电子环保证书',
-    description: '个性化电子环保证书',
-    points: 200,
-  },
-  {
-    id: 4,
-    name: '环保头像框',
-    description: '专属环保头像框',
-    points: 250,
-  },
-]);
-
 // 当前积分
 const currentPoints = ref(200);
 
@@ -370,7 +298,7 @@ const changePassword = async () => {
 };
 
 // 积分兑换
-const exchangeItem = (item: any) => {
+const exchangeItem = (item: Reward) => {
   if (currentPoints.value < item.points) {
     ElMessage.warning('积分不足');
     return;

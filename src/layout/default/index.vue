@@ -16,24 +16,9 @@
         active-text-color="#409eff"
         router
       >
-        <el-menu-item index="/home">
-          <i class="el-icon-house"></i>
-          <span>首页</span>
-        </el-menu-item>
-
         <el-menu-item index="/check-in">
           <i class="el-icon-calendar"></i>
-          <span>环保打卡</span>
-        </el-menu-item>
-
-        <el-menu-item index="/data">
-          <i class="el-icon-pie-chart"></i>
-          <span>数据统计</span>
-        </el-menu-item>
-
-        <el-menu-item index="/community">
-          <i class="el-icon-user"></i>
-          <span>环保社区</span>
+          <span>打卡</span>
         </el-menu-item>
 
         <el-menu-item index="/user">

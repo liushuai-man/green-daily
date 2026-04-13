@@ -188,7 +188,7 @@ import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/modules/user';
 import { ElMessage } from 'element-plus';
-import { login, register, getCode } from '@/api/user';
+import { login, register, getCode } from '@/api/loginCode';
 
 const router = useRouter();
 const userStore = useUserStore();
